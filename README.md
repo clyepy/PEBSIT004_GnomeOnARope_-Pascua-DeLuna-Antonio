@@ -19,9 +19,9 @@ A 2D physics-based puzzle game where you guide a gnome attached to a rope, colle
   - **Tap Button Up Side** → Retract Rope
 - **Tilt** → Move gnome left and right
 - **On-Screen Buttons (Gameplay Menu):**
-  - ⬇️ Down → Extend Rope
-  - ⬆️ Up → Retract Rope
-  - ⏸️ Menu → Pause/Resume Game
+  -  Down → Extend Rope
+  -  Up → Retract Rope
+  -  Menu → Pause/Resume Game
 
 ---
 
@@ -56,5 +56,5 @@ A 2D physics-based puzzle game where you guide a gnome attached to a rope, colle
 
 ---
 
-## 📅 Final Commit / Release
+## Final Commit / Release
 - **Date:** 21/09/25
