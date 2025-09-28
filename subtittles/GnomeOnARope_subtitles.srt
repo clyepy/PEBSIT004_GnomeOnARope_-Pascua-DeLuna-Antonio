@@ -1,0 +1,643 @@
+﻿1
+00:00:12,799 --> 00:00:15,666
+When you open the Gnome Well project in Unity,
+you’ll see several main folders.
+
+2
+00:00:15,733 --> 00:00:18,199
+Each has specific purpose in how Unity organizes and
+run the game
+
+3
+00:00:18,299 --> 00:00:21,966
+Build is for Exported game builds, Library holds Unity’s cache
+and Assets is the Main game folder 
+
+4
+00:00:21,999 --> 00:00:27,766
+  Inside the assets, we have App Resources for Fonts, UI icons, shared assets, Gnome for Prefabs, animations, and scripts for the gnome.
+
+5
+00:00:27,966 --> 00:00:32,499
+Scripts for Game logic like Rope, GameManager, CameraFollow, Settings for Input, Graphics presets.
+
+6
+00:00:32,533 --> 00:00:35,733
+In short, inside every folder, everything is organized by purpose.
+
+7
+00:00:35,833 --> 00:00:42,299
+Knowing how to navigate Unity’s interface is one thing. Creating an entire game with it is another 
+
+8
+00:00:42,366 --> 00:00:45,866
+The way that we’ll build this game is as follows
+
+9
+00:00:46,066 --> 00:00:50,333
+First, we’ll create the gnome, using temporary
+stick-figure images.
+
+10
+00:00:50,399 --> 00:00:54,699
+With the rope, Gnome, and input system in place, we can begine actually creating the game itself
+
+11
+00:00:54,766 --> 00:00:58,166
+We’ll implement the traps and
+the treasure, and start playing the game proper.
+
+12
+00:00:58,166 --> 00:01:02,199
+From there, it’s just matter of polish: the Gnome’s sprites will be replaced with more complex ones
+
+13
+00:01:02,199 --> 00:01:03,899
+Now, let’s get started 
+
+14
+00:01:04,633 --> 00:01:12,599
+Here, i already created the project, downloaded the assets from the repository, unzipped them into the appropriate folder in my project, and imported the prototype Gnome assets
+
+15
+00:01:13,899 --> 00:01:16,499
+My Gnome’s Well development process
+will be divided into three phases
+
+16
+00:01:16,499 --> 00:01:18,066
+The phase one is setting up
+
+17
+00:01:18,333 --> 00:01:25,666
+In phase one, we created the project named “Gnome Well”
+and promote that, prototype Gnome assets 
+
+18
+00:01:25,733 --> 00:01:28,299
+We added Sprites to the
+Scene
+
+19
+00:01:28,299 --> 00:01:31,533
+And with the assets imported, we move
+into assembling our gnome
+
+20
+00:01:31,533 --> 00:01:34,766
+We opened the folder, we just
+brought into the Unity
+
+21
+00:01:34,866 --> 00:01:39,533
+then dragged each sprite directly into the
+Scene view or the Hierarchy window.
+
+22
+00:01:39,766 --> 00:01:43,333
+At this point, we saw
+six different sprites appear in our scene 
+
+23
+00:01:43,533 --> 00:01:46,799
+At first, pieces were all there,
+but they weren’t place together.
+
+24
+00:01:47,133 --> 00:01:51,466
+Now our Gnome looks part
+We give it some physics so it could interact
+
+25
+00:01:51,699 --> 00:02:01,833
+In the Inspector, we add Component, searched for 
+Rigidbody 2D, and added it so, this gave each sprite gravity
+and collision capabilities.
+
+26
+00:02:03,899 --> 00:02:09,633
+We drag the Rope into the scene
+and give ourselves more control over the rope 
+system later
+
+27
+00:02:09,733 --> 00:02:15,666
+The moment of truth, We hit the play button at the
+top of Unity to see it all come to life.
+
+28
+00:02:16,299 --> 00:02:23,466
+Here’s a line should streched from the gnome
+to a point above, simulating the rope’s anchor.
+
+29
+00:02:24,399 --> 00:02:30,566
+The gnome dropped down, hung from the rope, and swayed with that
+floppy we were going for
+
+30
+00:02:33,199 --> 00:02:36,366
+Setting Up Unity Remote for Testing
+
+31
+00:02:36,899 --> 00:02:40,866
+Now, the game scene have mirrored to my phone
+
+32
+00:02:43,866 --> 00:02:45,633
+Adding tilt control
+
+33
+00:02:45,666 --> 00:02:49,166
+We wanted the Gnome to swing naturally
+when tilting the phone
+
+34
+00:02:49,499 --> 00:02:54,033
+To do this, we wrote scripts:
+InputManager, and Swinging script
+
+35
+00:02:54,099 --> 00:03:02,566
+InputManager inputs accelerator input and
+reads the input the InputManager values and apply
+physics force to the body.
+
+36
+00:03:03,533 --> 00:03:08,299
+Swinging to apply sideway force
+to the Gnome’s rigidbody.
+
+37
+00:03:10,833 --> 00:03:13,766
+Controlling the Rope
+(Extend and Extract)
+
+38
+00:03:14,266 --> 00:03:18,899
+We created UI button, name it down, and
+anchor it to the bottom-right
+
+39
+00:03:19,099 --> 00:03:25,233
+We also created UI button, name it Up and,
+anchor it to the bottom-right beside the Down button.
+
+40
+00:03:25,299 --> 00:03:28,966
+We added IU button to make
+the rope longer or shorter.
+
+41
+00:03:29,066 --> 00:03:33,433
+For the ‘Up’ button, we made it affect
+Rope.isDecreasing instead.
+
+42
+00:03:35,466 --> 00:03:37,666
+Making the Camera
+follow the Gnome
+
+43
+00:03:37,733 --> 00:03:41,266
+Without the camera, the Gnome
+disappears as the rope extend
+
+44
+00:03:41,666 --> 00:03:49,099
+We select the Camera, add a script named “CameraFollow”
+and drag the Gnome’s body to the camera follow
+
+45
+00:03:51,433 --> 00:03:52,766
+Coding the Gnome
+
+46
+00:03:53,066 --> 00:03:57,133
+The Gnome needed to show
+particles effects when damaged like
+
+47
+00:03:57,333 --> 00:04:00,599
+Lose limbs and
+spawn bloody fountains.
+
+48
+00:04:00,999 --> 00:04:03,166
+Track whenever its
+holding treasure
+
+49
+00:04:03,333 --> 00:04:08,433
+That is why we write
+BodyPart script for individual parts
+
+50
+00:04:09,033 --> 00:04:14,133
+To write Gnome.cs script
+for overall gnome behavior
+
+51
+00:04:14,566 --> 00:04:19,799
+It should show Track states for alive, dead
+and holding treasure.
+
+52
+00:04:20,266 --> 00:04:23,833
+It also handles damage and effects
+
+53
+00:04:23,933 --> 00:04:30,099
+and runs DestroyGnome() to detach limbs and
+spawn fountains/ghost.
+
+54
+00:04:32,333 --> 00:04:34,399
+Setting up Game Manager
+
+55
+00:04:34,666 --> 00:04:38,233
+The Game Manager is the brain
+of the Gnome’s Well game.
+
+56
+00:04:38,966 --> 00:04:43,233
+Game Manager keeps track of the
+gnome, treasure, traps, and exit.
+
+57
+00:04:43,266 --> 00:04:47,733
+It handles spawning a new gnome
+at the start point.
+
+58
+00:04:48,266 --> 00:04:50,899
+Resetting object like treasure
+
+59
+00:04:51,266 --> 00:04:58,566
+Handling win or loss, prepare,
+we create a script a Resettable script.
+
+60
+00:04:58,833 --> 00:05:02,666
+So, object like Treasure can 
+reset themselves.
+
+61
+00:05:02,866 --> 00:05:06,399
+We also create a GameManager script
+
+62
+00:05:06,399 --> 00:05:13,133
+To spawn Gnome at Start Point, attach
+the Rope, and set the Camera to follow it and many more
+
+63
+00:05:14,999 --> 00:05:17,066
+Removing the
+Old Gnome
+
+64
+00:05:17,333 --> 00:05:22,499
+When a Gnome dies or the game restarts, the old Gnome
+should stay in the well
+
+65
+00:05:22,766 --> 00:05:24,833
+But stop being
+“the player”.
+
+66
+00:05:26,866 --> 00:05:28,166
+Killing a Gnome
+
+67
+00:05:28,366 --> 00:05:33,033
+When a gnome dies, we wanted both
+gameplay logic and effect
+
+68
+00:05:33,166 --> 00:05:37,732
+And keeps the camera focused on the
+death spot for a moment.
+
+69
+00:05:40,199 --> 00:05:41,499
+Preparing the scene
+
+70
+00:05:42,066 --> 00:05:45,632
+Before running everthing, we 
+added scene setup object
+
+71
+00:05:45,799 --> 00:05:51,532
+We create a Start Point GameObject which is
+a yellow capsule icon in the scene
+
+72
+00:05:51,632 --> 00:05:53,966
+The game manager spawn
+gnome here
+
+73
+00:05:56,666 --> 00:05:57,832
+Adding traps
+
+74
+00:05:57,999 --> 00:06:02,599
+Traps needed to be flexible, so instead of
+writing custom script for each
+
+75
+00:06:02,932 --> 00:06:04,766
+We made a generic solution
+
+76
+00:06:05,032 --> 00:06:10,366
+We create a SignalOnTouch.cs script and
+when an object tagged “Player” collide
+
+77
+00:06:10,366 --> 00:06:11,932
+It fires a UnityEvent
+
+78
+00:06:13,666 --> 00:06:14,899
+Adding a background
+
+79
+00:06:14,999 --> 00:06:18,632
+To polish visuals, we added a
+temporary background. 
+
+80
+00:06:19,166 --> 00:06:21,232
+Resize it with
+React tool
+
+81
+00:06:21,599 --> 00:06:25,432
+Now, there’s a background instead of
+Unity’s default blue
+
+82
+00:06:25,932 --> 00:06:29,666
+Now, winning required two objects:
+Treasure and Exit
+
+83
+00:06:30,066 --> 00:06:35,299
+We uses SignalOnTouch to call GameManager
+to Gnome’s holdingTreasure sprites
+
+84
+00:06:35,732 --> 00:06:39,399
+If gnome is holding treasure
+then it is victory.
+
+85
+00:06:41,666 --> 00:06:43,166
+Polishing the game
+
+86
+00:06:43,432 --> 00:06:48,699
+In this phase, we’ll be adding new sprites for the gnome,
+improving the look of the background.
+
+87
+00:06:49,566 --> 00:06:53,299
+And adding particle effects that improve the
+look of the game
+
+88
+00:06:53,399 --> 00:06:55,166
+Updating Gnome’s Art
+
+89
+00:06:55,666 --> 00:06:58,899
+GnomeParts folder contains
+two subfolders:
+
+90
+00:06:58,966 --> 00:07:00,332
+Alive and Dead.
+
+91
+00:07:00,732 --> 00:07:01,899
+We’ll start with Alive
+
+92
+00:07:02,732 --> 00:07:04,499
+Double click the Gnome prefab
+
+93
+00:07:05,066 --> 00:07:09,332
+Select the body part of the gnome
+like the left leg or the head
+
+94
+00:07:09,766 --> 00:07:13,432
+Then start changing each of them with
+the part of the Alive Folder
+
+95
+00:07:16,566 --> 00:07:17,899
+Creating the background
+
+96
+00:07:18,199 --> 00:07:23,166
+To polish visual, we added temporary background
+which is the background Brown
+
+97
+00:07:24,099 --> 00:07:28,132
+But now, we will also be adding a blue background
+and a red background
+
+98
+00:07:28,666 --> 00:07:32,232
+And adjust their position to create
+the side walls and the foreground.
+
+99
+00:07:33,966 --> 00:07:35,166
+The bottom of the well
+
+100
+00:07:35,632 --> 00:07:39,199
+Drag the bottom sprite and follow it
+at the bottom of the well
+
+101
+00:07:39,566 --> 00:07:41,999
+Add sandy sprites on both sides
+of the well
+
+102
+00:07:42,266 --> 00:07:44,732
+Adjust position to line up with the walls.
+
+103
+00:07:45,132 --> 00:07:47,932
+Place the treasure sprite in
+the middle of the sand dune.
+
+104
+00:07:49,566 --> 00:07:51,432
+Updating the
+Gnome’s Interface
+
+105
+00:07:51,666 --> 00:07:55,566
+After setting up the basic UI elements,
+we create the Gameplay menu  
+
+106
+00:07:55,699 --> 00:07:58,266
+And set it to stretch
+across the screen
+
+107
+00:07:58,966 --> 00:08:02,432
+Next, we create the Game Over screen,
+add the You Win text
+
+108
+00:08:02,866 --> 00:08:06,066
+and position the New Game button
+to restart the game
+
+109
+00:08:06,566 --> 00:08:11,899
+We connect the GameManager to the
+UI elements to handle visibility and functionality
+
+110
+00:08:12,232 --> 00:08:15,799
+Lastly, we add a Pause button on top-right
+of the screen
+
+111
+00:08:15,799 --> 00:08:19,866
+and test the entire setup to
+ensure everything works seamelessly.
+
+112
+00:08:21,799 --> 00:08:22,966
+Invisibility mode
+
+113
+00:08:23,599 --> 00:08:26,032
+We first made it as a
+child of the Canvas
+
+114
+00:08:26,066 --> 00:08:30,132
+Toggle the UI element for invisibility,
+position it in the top-left corner
+
+115
+00:08:30,199 --> 00:08:32,532
+And label it “Invicible” so
+we can see it
+
+116
+00:08:32,999 --> 00:08:37,432
+In the toggle’s Value Changed event,
+link it to GameManager gnome invicible
+
+117
+00:08:37,732 --> 00:08:44,166
+Play the game, toggle the Invicible checkbox, 
+and confirm the Gnome no longer dies from the traps.
+
+118
+00:08:45,399 --> 00:08:47,666
+After applied these changes
+
+119
+00:08:47,932 --> 00:08:51,599
+We now have polished the game with updated visual
+from the Gnome 
+
+120
+00:08:51,966 --> 00:08:55,366
+custom backgrounds, and
+cleaner user interface.
+
+121
+00:08:56,266 --> 00:09:01,132
+The invicibility mode makes testing much quicker,
+and with the Game Over screen
+
+122
+00:09:01,466 --> 00:09:03,199
+New restart functionality
+
+123
+00:09:03,499 --> 00:09:06,832
+Players can easily reset and
+continue their adventure
+
+124
+00:09:07,399 --> 00:09:08,699
+So how to test
+
+125
+00:09:08,799 --> 00:09:10,666
+Open the project
+in the Unity
+
+126
+00:09:10,832 --> 00:09:12,866
+Run the MainScene from the scene
+
+127
+00:09:13,099 --> 00:09:16,099
+Use the on-screen buttons to extend
+and extract rope
+
+128
+00:09:16,366 --> 00:09:19,999
+And the goal is, to collect the treasure
+then return to the top.
+
+129
+00:09:20,866 --> 00:09:22,932
+So the issue and improvements
+
+130
+00:09:23,266 --> 00:09:25,766
+Rope sometimes
+extend too far
+
+131
+00:09:25,832 --> 00:09:29,466
+and respawn can cause rope length bugs.
+
+132
+00:09:29,666 --> 00:09:34,599
+And win on lose menus need polish
+like text, and animation.
+
+133
+00:09:34,866 --> 00:09:40,266
+While the background arts and sprites are
+placeholder, needs improvement visuals.
+
+134
+00:09:40,499 --> 00:09:45,866
+So, for the closing credits, the developer is
+yours truly, Chelse Leigh Pascua
+
+135
+00:09:45,899 --> 00:09:49,832
+And the documentors are
+Antonio, and De Luna
+
+136
+00:09:49,899 --> 00:09:51,632
+That’s all
+Thank you.
