@@ -44,7 +44,7 @@ A 2D physics-based puzzle game where you guide a gnome attached to a rope, colle
 ---
 
 ## Demo Video
-- **Gdrive Video:** [Located in](https://drive.google.com/file/d/1t6pdod28gqG-EfLzNmeymZBPanmaUG3t/view?usp=sharing) ``
+- **Gdrive Video:** [Click this link](https://drive.google.com/file/d/1t6pdod28gqG-EfLzNmeymZBPanmaUG3t/view?usp=sharing) ``
 
 ---
 
